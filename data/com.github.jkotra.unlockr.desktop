@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=unlockR
+GenericName=unlockR
+Comment=PDF Decryptor
+Icon=com.github.jkotra.unlockr
+Exec=unlockr
+Terminal=false
+Type=Application
+Categories=Utility;
+StartupNotify=false

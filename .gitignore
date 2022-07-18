@@ -1,0 +1,4 @@
+builddir/**
+build/**
+src/a.out
+po/*.mo

@@ -1,0 +1,29 @@
+.m-12 {
+    margin: 12px;
+}
+
+.m-6 {
+    margin-top: 6px;
+}
+
+.b-12 {
+    margin-bottom: 16px;
+}
+
+.choose_btn {
+    margin-left: 24px;
+    margin-right: 24px;
+}
+
+.green_toast toast {
+    background-color: @green_4;
+}
+
+.red_toast toast {
+    background-color: @red_4;
+}
+
+.password-input {
+    font-size: 28px;
+    margin: 12px;
+}

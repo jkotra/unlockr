@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+    <gresource prefix="/com/github/jkotra/unlockr/">
+
+        <file>icons/com.github.jkotra.unlockr.png</file>
+        <file>icons/com.github.jkotra.unlockr.svg</file>
+        <file>css/main.css</file>
+
+    </gresource>
+</gresources>
