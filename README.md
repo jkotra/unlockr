@@ -25,6 +25,8 @@ pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-gtk4 mingw-w64-x86_64-libadwaita
 
 
 * to import ddl dependencies in `msys2.exe`:
+
 `ldd unlockr.exe | grep '\/mingw.*\.dll' -o | xargs -I{} cp "{}" .`
+
 
 * Or, run `windows_portable.py`
