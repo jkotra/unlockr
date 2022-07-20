@@ -1,4 +1,6 @@
 builddir/**
+.flatpak-builder/**
+build-dir/**
 build/**
 src/a.out
 po/*.mo

@@ -1,6 +1,8 @@
 # unlockR
 
-A simple tool to decrypt PDf files.
+![](static/light.png)
+
+A simple tool to decrypt PDF files.
 
 ---
 

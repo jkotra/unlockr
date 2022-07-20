@@ -19,21 +19,16 @@
         <kudo>Notifications</kudo>
     </kudos>
 
-    <launchable type="desktop-id">com.github.jkotra.eovpn.desktop</launchable>
+    <launchable type="desktop-id">com.github.jkotra.unlockr.desktop</launchable>
 
     <screenshots>
 
-        <!--
         <screenshot type="default">
-            <image>https://raw.githubusercontent.com/jkotra/eOVPN/master/static/window.png</image>
+            <image>https://raw.githubusercontent.com/jkotra/unlockr/master/static/light.png</image>
         </screenshot>
         <screenshot>
-            <image>https://raw.githubusercontent.com/jkotra/eOVPN/master/static/window_connected.png</image>
+            <image>https://raw.githubusercontent.com/jkotra/unlockr/master/static/dark.png</image>
         </screenshot>
-        <screenshot>
-            <image>https://raw.githubusercontent.com/jkotra/eOVPN/master/static/window_connected_with_flag.png</image>
-        </screenshot>
-    -->
 
     </screenshots>
 
@@ -42,10 +37,20 @@
     <url type="donation">https://ko-fi.com/jkotra</url>
 
     <provides>
-        <binary>eovpn</binary>
+        <binary>unlockr</binary>
     </provides>
 
-    <releases></releases>
+    <releases>
+
+        <release version="0.01" date="2022-07-19">
+            <description>
+                <ul>
+                    <li>Initial Release</li>
+                </ul>
+            </description>
+        </release>
+
+    </releases>
 
     <content_rating type="oars-1.1">
         <content_attribute id="violence-cartoon">none</content_attribute>
