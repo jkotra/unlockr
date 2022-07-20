@@ -189,8 +189,8 @@ on_activate (GtkApplication *app)
 
   widgets.process_widgets = construct_process (process_box);
 
-  GtkWidget *_logo = gtk_image_new_from_resource (
-      "/com/github/jkotra/unlockr/icons/com.github.jkotra.unlockr.png");
+  GtkWidget *_logo =
+      gtk_image_new_from_resource ("/com/github/jkotra/unlockr/icons/hero.png");
   gtk_image_set_pixel_size (GTK_IMAGE (_logo), 164);
   gtk_widget_add_css_class (_logo, "m-12");
   gtk_box_append (GTK_BOX (welcome_box), _logo);

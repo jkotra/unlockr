@@ -4,6 +4,8 @@
 
         <file>icons/com.github.jkotra.unlockr.png</file>
         <file>icons/com.github.jkotra.unlockr.svg</file>
+        <file>icons/hero.png</file>
+        <file>icons/hero.svg</file>
         <file>css/main.css</file>
 
     </gresource>

@@ -99,6 +99,7 @@ construct_process (GtkWidget *box)
 
   GtkWidget *file_label = gtk_label_new (NULL);
   gtk_label_set_wrap (GTK_LABEL (file_label), TRUE);
+  add_class_to_widget (file_label, "file-label");
 
   GtkWidget *password_input = gtk_password_entry_new ();
   gtk_widget_set_size_request (password_input, -1, 80);
