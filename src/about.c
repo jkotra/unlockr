@@ -8,8 +8,9 @@ show_about (GSimpleAction *self, GVariant *parameter, GtkWidget *window)
   GtkWidget *about = gtk_about_dialog_new ();
 
   gtk_about_dialog_set_program_name (GTK_ABOUT_DIALOG (about), "unlockr");
-  gtk_about_dialog_set_version (GTK_ABOUT_DIALOG (about), "0.01");
-  gtk_about_dialog_set_website (GTK_ABOUT_DIALOG (about), "https://stdin.top/");
+  gtk_about_dialog_set_version (GTK_ABOUT_DIALOG (about), "0.02");
+  gtk_about_dialog_set_website (GTK_ABOUT_DIALOG (about),
+                                "https://github.com/jkotra/unlockr");
 
   GdkTexture *about_logo = gdk_texture_new_from_resource (
       "/com/github/jkotra/unlockr/icons/com.github.jkotra.unlockr.png");
