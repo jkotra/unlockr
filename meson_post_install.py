@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from os import environ, path
+import platform
 from subprocess import call
 
 from os import environ, path
@@ -12,7 +13,7 @@ destdir = environ.get('DESTDIR', '')
 
 print(datadir)
 
-if not destdir:
+if not destdir and platform.system() == "linux":
     print('Updating icon cache...')
     call(['gtk-update-icon-cache', '-qtf', path.join(datadir, 'icons', 'hicolor')])
     print("Installing new Schemas")
