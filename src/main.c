@@ -45,7 +45,8 @@ on_file_chosen (GtkNativeDialog *native, int response)
 
       bool is_encrypted = isFileEncrypted (file.path);
 
-      g_message ("%s %d", file.path, is_encrypted);
+      g_message ("file: %s | status: %s", file.name,
+                 is_encrypted ? "Encrypted" : "Not Encrypted");
       char *markup = g_markup_printf_escaped (
           gettext ("<span size=\"large\">%s is <span "
                    "weight=\"bold\">%s.</span></"

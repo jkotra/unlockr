@@ -47,7 +47,7 @@ void
 on_password_changed (GtkWidget *password_entry, gpointer user_data)
 {
   const char *text = gtk_editable_get_text (GTK_EDITABLE (password_entry));
-  g_message ("%s", text);
+  g_debug ("%s", text);
   if (strlen (text) < 1)
     {
       gtk_widget_set_sensitive (Pwidgets.decrypt_btn, FALSE);

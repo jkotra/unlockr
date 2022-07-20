@@ -34,8 +34,8 @@ set_toast_color_to_red (GtkWidget *toast_overlay)
 void
 print_file_struct (struct File *file)
 {
-  g_message ("{\n\tname: %s\n\tpath: %s\n\tstatus: %d\n}", file->name,
-             file->path, file->decrypt_status);
+  g_debug ("{\n\tname: %s\n\tpath: %s\n\tstatus: %d\n}", file->name, file->path,
+           file->decrypt_status);
 }
 
 void

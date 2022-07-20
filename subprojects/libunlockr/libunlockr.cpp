@@ -1,5 +1,6 @@
 #include <qpdf/QPDF.hh>
 #include <qpdf/QPDFWriter.hh>
+#include <glib.h>
 
 extern "C" const char *
 getVersion ()
@@ -47,7 +48,8 @@ decryptPDF (char *filepath, char *out, char *password)
     }
   catch (std::exception &err)
     {
-      std::cout << err.what () << std::endl;
+      // std::cout << err.what () << std::endl;
+      g_warning ("%s", err.what ());
       return NULL;
     }
 }
