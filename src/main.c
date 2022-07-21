@@ -143,6 +143,7 @@ on_activate (GtkApplication *app)
   construct_popover_menu (app, app_window, header_bar);
 
   GtkWidget *cancel_btn = gtk_button_new_with_label (gettext ("Cancel"));
+  add_class_to_widget (cancel_btn, "destructive-action");
   adw_header_bar_pack_start (ADW_HEADER_BAR (header_bar), cancel_btn);
   gtk_widget_set_visible (cancel_btn, FALSE); // initial state
   g_signal_connect (cancel_btn, "clicked", G_CALLBACK (go_back_to_welcome),
@@ -151,12 +152,12 @@ on_activate (GtkApplication *app)
 
   /* main_leaf is top most widget */
   GtkWidget *main_leaf = adw_leaflet_new ();
-  gtk_widget_set_size_request (main_leaf, 400, 400);
+  gtk_widget_set_size_request (main_leaf, -1, 340);
   gtk_orientable_set_orientation (GTK_ORIENTABLE (main_leaf),
                                   GTK_ORIENTATION_VERTICAL);
   widgets.main_leaf = main_leaf;
 
-  /* add hewader to leaflet */
+  /* add header to leaflet */
   adw_leaflet_append (ADW_LEAFLET (main_leaf), GTK_WIDGET (header_bar));
 
   /* set main_leaf as content of our app */
@@ -200,9 +201,7 @@ on_activate (GtkApplication *app)
   gtk_button_set_label (GTK_BUTTON (choose_btn), gettext ("Choose a File..."));
   gtk_widget_set_valign (choose_btn, GTK_ALIGN_CENTER);
   gtk_box_append (GTK_BOX (welcome_box), choose_btn);
-  gtk_widget_set_margin_top (choose_btn, 16);
-  gtk_widget_set_margin_start (choose_btn, 24);
-  gtk_widget_set_margin_end (choose_btn, 24);
+  add_class_to_widget (choose_btn, "choose-btn");
   widgets.choose_button = choose_btn;
 
   g_signal_connect (choose_btn, "clicked", G_CALLBACK (choose_file), NULL);
