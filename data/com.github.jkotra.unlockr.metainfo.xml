@@ -49,6 +49,14 @@
     </provides>
 
     <releases>
+        
+        <release version="0.04" date="2022-07-20">
+            <description>
+                <ul>
+                    <li>Bug fixes.</li>
+                </ul>
+            </description>
+        </release>
 
         <release version="0.01" date="2022-07-19">
             <description>
