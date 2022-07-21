@@ -8,16 +8,24 @@
     <summary>PDF Password remover</summary>
 
     <description>
-        <p>
-    unlockR is a simple app to unlock / decrypt PDF files.
-        </p>
+        <p>unlockR is a simple app to unlock / decrypt PDF files.</p>
     </description>
 
     <kudos>
         <kudo>HiDpiIcon</kudo>
         <kudo>ModernToolkit</kudo>
-        <kudo>Notifications</kudo>
     </kudos>
+
+    <requires>
+        <display_length compare="ge">320</display_length>
+    </requires>
+
+    <recommends>
+        <control>keyboard</control>
+        <control>pointing</control>
+        <control>touch</control>
+    </recommends>
+
 
     <launchable type="desktop-id">com.github.jkotra.unlockr.desktop</launchable>
 
