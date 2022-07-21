@@ -66,7 +66,9 @@ on_decrypt_btn_clicked (GtkWidget *btn, gpointer user_data)
       gtk_editable_get_text (GTK_EDITABLE (Pwidgets.password_input));
 
   const gchar *home = g_get_home_dir ();
-  gchar *out = g_build_filename (home, "Documents", Pfile->name, NULL);
+  const gchar *docs_dir = g_get_user_special_dir (G_USER_DIRECTORY_DOCUMENTS);
+  gchar *out = g_build_filename (docs_dir, Pfile->name, NULL);
+  g_debug ("out = %s", out);
   bool result = decryptPDF (Pfile->path, (char *) out, (char *) text);
   if (result)
     {
@@ -79,6 +81,7 @@ on_decrypt_btn_clicked (GtkWidget *btn, gpointer user_data)
       set_toast_color_to_red (Pwidgets.toast_overlay);
       send_toast (gettext ("Invalid Password!"));
     }
+  g_free (out);
 }
 
 struct ProcessPageWidgets
