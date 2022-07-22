@@ -1,0 +1,65 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2022-07-18 19:40+0530\n"
+"PO-Revision-Date: 2022-07-22 08:41+0100\n"
+"Last-Translator: Albano Battistella <albano_battistella@hotmail.com\n"
+"Language-Team: Italian\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: src\n"
+"X-Poedit-SearchPath-1: data\n"
+
+#: src/main.c:50
+#, c-format
+msgid "<span size=\"large\">%s is <span weight=\"bold\">%s.</span></span>"
+msgstr "<span size=\"large\">%s e <span weight=\"bold\">%s.</span></span>"
+
+#: src/main.c:54
+msgid "Encrypted"
+msgstr "Crittografato"
+
+#: src/main.c:54
+msgid "Not Encrypted"
+msgstr "Non Crittografato"
+
+#: src/main.c:80
+msgid "Select PDF Files"
+msgstr "Seleziona File PDF"
+
+#: src/main.c:81
+msgid "Select"
+msgstr "Seleziona"
+
+#: src/main.c:81 src/main.c:142
+msgid "Cancel"
+msgstr "Cancella"
+
+#: src/main.c:123
+msgid "About"
+msgstr "Informazioni"
+
+#: src/main.c:197
+msgid "Choose a File..."
+msgstr "Scegli un file..."
+
+#: src/process.c:32
+msgid "Enter Password..."
+msgstr "Inserire password..."
+
+#: src/process.c:74
+msgid "File Decryped &amp; Saved to Documents!"
+msgstr "File decrittografato &amp; Salvato in documenti!"
+
+#: src/process.c:80
+msgid "Invalid Password!"
+msgstr "Password non valida!"
+
+#: src/process.c:111
+msgid "Decrypt"
+msgstr "Decrittografa"
