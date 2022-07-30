@@ -24,7 +24,63 @@ go_back_to_welcome (GtkWidget *btn, gpointer data)
 {
   gtk_widget_set_visible (btn, FALSE);
   gtk_stack_set_visible_child_name (GTK_STACK (widgets.stack), "welcome");
+
+  gtk_editable_set_text (GTK_EDITABLE (widgets.process_widgets.password_input),
+                         "");
+  g_debug ("password reset to empty!");
   free_file_struct (&file);
+}
+
+void
+setup_process_for_file ()
+{
+
+  // set file for process stage.
+  set_file (&file);
+
+  g_message ("file: %s | status: %s", file.name,
+             file.decrypt_status ? "Encrypted" : "Not Encrypted");
+  char *markup = g_markup_printf_escaped (
+      gettext ("<span size=\"large\">%s is <span "
+               "weight=\"bold\">%s.</span></"
+               "span>"),
+      file.name,
+      file.decrypt_status ? gettext ("Encrypted") : gettext ("Not Encrypted"));
+
+  gtk_label_set_markup (GTK_LABEL (widgets.process_widgets.file_label), markup);
+  g_free (markup);
+  gtk_widget_set_visible (widgets.header_cancel_btn, TRUE);
+  gtk_stack_set_visible_child_name (GTK_STACK (widgets.stack), "process");
+
+  if (!file.decrypt_status)
+    {
+      gtk_widget_set_visible (widgets.process_widgets.password_input, FALSE);
+      gtk_widget_set_visible (widgets.process_widgets.decrypt_btn, FALSE);
+    }
+  else
+    {
+      gtk_widget_set_visible (widgets.process_widgets.password_input, TRUE);
+      gtk_widget_set_visible (widgets.process_widgets.decrypt_btn, TRUE);
+    }
+}
+
+void
+on_drop (GtkDropTarget *target,
+         const GValue *value,
+         double x,
+         double y,
+         gpointer data)
+{
+  GFile *dropped_file = G_FILE (g_value_get_object (value));
+  g_message ("dropped (%f, %f): %s", x, y, g_file_get_basename (dropped_file));
+
+  char *chosen_path = g_file_get_path (dropped_file);
+
+  file.name = g_file_get_basename (dropped_file);
+  file.path = chosen_path;
+  file.decrypt_status = isFileEncrypted (file.path);
+
+  setup_process_for_file ();
 }
 
 void
@@ -38,40 +94,10 @@ on_file_chosen (GtkNativeDialog *native, int response)
 
       file.name = g_file_get_basename (chosen_file);
       file.path = chosen_path;
-      file.decrypt_status = false;
+      file.decrypt_status = isFileEncrypted (file.path);
 
-      // set file for process stage.
-      set_file (&file);
-
-      bool is_encrypted = isFileEncrypted (file.path);
-
-      g_message ("file: %s | status: %s", file.name,
-                 is_encrypted ? "Encrypted" : "Not Encrypted");
-      char *markup = g_markup_printf_escaped (
-          gettext ("<span size=\"large\">%s is <span "
-                   "weight=\"bold\">%s.</span></"
-                   "span>"),
-          file.name,
-          is_encrypted ? gettext ("Encrypted") : gettext ("Not Encrypted"));
-
-      gtk_label_set_markup (GTK_LABEL (widgets.process_widgets.file_label),
-                            markup);
-      g_free (markup);
-      gtk_widget_set_visible (widgets.header_cancel_btn, TRUE);
-      gtk_stack_set_visible_child_name (GTK_STACK (widgets.stack), "process");
-
-      if (!is_encrypted)
-        {
-          gtk_widget_set_visible (widgets.process_widgets.password_input,
-                                  FALSE);
-          gtk_widget_set_visible (widgets.process_widgets.decrypt_btn, FALSE);
-        }
-      else
-        {
-          gtk_widget_set_visible (widgets.process_widgets.password_input, TRUE);
-          gtk_widget_set_visible (widgets.process_widgets.decrypt_btn, TRUE);
-        }
-    };
+      setup_process_for_file ();
+    }
 }
 
 void
@@ -138,6 +164,10 @@ on_activate (GtkApplication *app)
                             "com.github.jkotra.unlockr");
   widgets.main_window = app_window;
   inject_css ();
+  if (getenv ("G_MESSAGES_DEBUG") != NULL)
+    {
+      gtk_widget_add_css_class (app_window, "devel");
+    }
 
   GtkWidget *header_bar = adw_header_bar_new ();
   construct_popover_menu (app, app_window, header_bar);
@@ -173,7 +203,12 @@ on_activate (GtkApplication *app)
   GtkWidget *welcome_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 4);
   gtk_widget_set_vexpand (welcome_box, TRUE);
   gtk_widget_set_hexpand (welcome_box, TRUE);
-  gtk_widget_set_valign (welcome_box, GTK_ALIGN_CENTER);
+
+  // set drag-n-drop
+  GtkDropTarget *drop = gtk_drop_target_new (G_TYPE_FILE, GDK_ACTION_COPY);
+  g_signal_connect (drop, "drop", G_CALLBACK (on_drop), NULL);
+  gtk_widget_add_controller (welcome_box, GTK_EVENT_CONTROLLER (drop));
+
   GtkWidget *process_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 4);
   gtk_widget_set_vexpand (process_box, TRUE);
 
@@ -194,6 +229,8 @@ on_activate (GtkApplication *app)
   GtkWidget *_logo =
       gtk_image_new_from_resource ("/com/github/jkotra/unlockr/icons/hero.png");
   gtk_image_set_pixel_size (GTK_IMAGE (_logo), 164);
+  gtk_widget_set_valign (_logo, GTK_ALIGN_CENTER);
+  gtk_widget_set_vexpand (_logo, TRUE);
   gtk_widget_add_css_class (_logo, "m-12");
   gtk_box_append (GTK_BOX (welcome_box), _logo);
 
