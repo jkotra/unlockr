@@ -37,6 +37,12 @@
         <screenshot>
             <image>https://raw.githubusercontent.com/jkotra/unlockr/master/static/dark.png</image>
         </screenshot>
+        <screenshot>
+            <image>https://raw.githubusercontent.com/jkotra/unlockr/master/static/process.png</image>
+        </screenshot>
+        <screenshot>
+            <image>https://raw.githubusercontent.com/jkotra/unlockr/master/static/ok.png</image>
+        </screenshot>
 
     </screenshots>
 
@@ -49,6 +55,14 @@
     </provides>
 
     <releases>
+        <release version="0.05" date="2022-07-29">
+            <description>
+                <ul>
+                    <li>drag-n-drop.</li>
+                    <li>empty password text on cancel.</li>
+                </ul>
+            </description>
+        </release>
         
         <release version="0.04" date="2022-07-20">
             <description>
