@@ -13,11 +13,12 @@ finish-args:
 
 modules:
   - name: qpdf
-    buildsystem: autotools
+    buildsystem: cmake-ninja
+    builddir: true
     sources:
       - type: git
         url: 'https://github.com/qpdf/qpdf'
-        tag: "release-qpdf-10.6.3"
+        tag: "v11.1.0"
     cleanup:
       - "*.a"
       - "*.la"

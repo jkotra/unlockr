@@ -1,7 +1,8 @@
-project('libunlockr', 'cpp')
+project('libunlockr', 'cpp', 
+        default_options : ['werror=false'])
 
 deps = [
-    dependency('libqpdf', version: '>=10.5.0'),
+    dependency('libqpdf', version: '>=11.0.0'),
     dependency('glib-2.0', version: '>=2.0')
 ]
 
