@@ -1,6 +1,6 @@
 app-id: com.github.jkotra.unlockr
 runtime : org.gnome.Platform
-runtime-version : '42'
+runtime-version : '43'
 sdk : org.gnome.Sdk
 command: unlockr
 
@@ -31,4 +31,4 @@ modules:
     sources:
       - type: git
         url: "https://github.com/jkotra/unlockr.git"
-        tag: "0.05"
+        tag: "0.06"

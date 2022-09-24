@@ -251,7 +251,7 @@ main (int argc, char *argv[])
 {
   // Create a new application
   AdwApplication *app = adw_application_new ("com.github.jkotra.unlockr",
-                                             G_APPLICATION_FLAGS_NONE);
+                                             G_APPLICATION_DEFAULT_FLAGS);
   g_signal_connect (app, "activate", G_CALLBACK (on_activate), NULL);
   return g_application_run (G_APPLICATION (app), argc, argv);
 }
