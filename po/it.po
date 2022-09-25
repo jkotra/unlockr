@@ -18,7 +18,7 @@ msgstr ""
 #: src/main.c:50
 #, c-format
 msgid "<span size=\"large\">%s is <span weight=\"bold\">%s.</span></span>"
-msgstr "<span size=\"large\">%s e <span weight=\"bold\">%s.</span></span>"
+msgstr "<span size=\"large\">%s è <span weight=\"bold\">%s.</span></span>"
 
 #: src/main.c:54
 msgid "Encrypted"
