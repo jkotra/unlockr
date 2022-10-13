@@ -7,7 +7,7 @@ show_about (GSimpleAction *self, GVariant *parameter, GtkWidget *window)
 
   GtkWidget *about = adw_about_window_new ();
   adw_about_window_set_application_name (ADW_ABOUT_WINDOW (about), "unlockr");
-  adw_about_window_set_version (ADW_ABOUT_WINDOW (about), "0.06");
+  adw_about_window_set_version (ADW_ABOUT_WINDOW (about), "0.07");
   adw_about_window_set_website (ADW_ABOUT_WINDOW (about),
                                 "https://github.com/jkotra/unlockr");
   adw_about_window_set_license_type (ADW_ABOUT_WINDOW (about),

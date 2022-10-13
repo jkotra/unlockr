@@ -37,10 +37,21 @@ set_input_placeholder (GtkWidget *input)
 void
 send_toast (char *message)
 {
+
   AdwToast *toast = adw_toast_new (message);
   set_toast_priority (toast);
   adw_toast_overlay_add_toast (ADW_TOAST_OVERLAY (Pwidgets.toast_overlay),
                                toast);
+
+  if (Pwidgets.n_toasts > 0)
+    {
+      Pwidgets.toasts =
+          realloc (Pwidgets.toasts, (Pwidgets.n_toasts) * sizeof (GObject));
+      g_debug ("%s for n=%zu\n", "toast mem allocated!", Pwidgets.n_toasts);
+    }
+
+  Pwidgets.toasts[Pwidgets.n_toasts] = toast;
+  Pwidgets.n_toasts++;
 }
 
 void
@@ -75,6 +86,16 @@ on_decrypt_btn_clicked (GtkWidget *btn, gpointer user_data)
       set_toast_color_to_green (Pwidgets.toast_overlay);
       send_toast (gettext ("File Decryped &amp; Saved to Documents!"));
       Pfile->decrypt_status = true;
+
+      // dismiss queued toasts
+      for (size_t i = 0; i < Pwidgets.n_toasts - 1; i++)
+        {
+          const char *title =
+              adw_toast_get_title (ADW_TOAST (Pwidgets.toasts[i]));
+          g_debug ("dismissed toast title  = %s n=(%zu)\n", title, i);
+          adw_toast_dismiss (ADW_TOAST (Pwidgets.toasts[i]));
+        }
+      Pwidgets.n_toasts = 0;
     }
   else
     {
@@ -87,6 +108,9 @@ on_decrypt_btn_clicked (GtkWidget *btn, gpointer user_data)
 struct ProcessPageWidgets
 construct_process (GtkWidget *box)
 {
+
+  Pwidgets.toasts = malloc (1 * sizeof (GObject));
+
   GtkWidget *top_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 4);
   GtkWidget *bottom_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 4);
   GtkWidget *combined_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);

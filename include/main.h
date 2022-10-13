@@ -5,6 +5,9 @@ struct ProcessPageWidgets
   GtkWidget *decrypt_btn;
   struct File *file;
   GtkWidget *toast_overlay;
+
+  size_t n_toasts;
+  AdwToast **toasts;
 };
 
 typedef struct WelcomePageWidgets
