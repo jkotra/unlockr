@@ -1,0 +1,2 @@
+#define LOCALE_PATH "@LOCALE_DIR@"
+#define VERSION "@VERSION@"

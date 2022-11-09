@@ -7,6 +7,7 @@
 #include "process.h"
 #include "utils.h"
 #include "libunlockr.h"
+#include "details.h"
 
 AppWidgets widgets = { 0 };
 struct File file = { 0 };
@@ -249,6 +250,11 @@ on_activate (GtkApplication *app)
 int
 main (int argc, char *argv[])
 {
+
+  textdomain ("unlockr");
+  bindtextdomain ("unlockr", LOCALE_PATH);
+  g_debug ("textdomain=%s LOCALE_PATH=%s", textdomain (NULL), LOCALE_PATH);
+
   // Create a new application
   AdwApplication *app = adw_application_new ("com.github.jkotra.unlockr",
                                              G_APPLICATION_DEFAULT_FLAGS);
