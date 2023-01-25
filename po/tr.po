@@ -1,8 +1,8 @@
 # Turkish translation for unlockr.
-# Copyright (C) 2022 unlockr's COPYRIGHT HOLDER
+# Copyright (C) 2022-2023 unlockr's COPYRIGHT HOLDER
 # This file is distributed under the same license as the unlockr package.
 #
-# Sabri Ünal <libreajans@gmail.com>, 2022.
+# Sabri Ünal <libreajans@gmail.com>, 2022, 2023.
 #
 msgid ""
 msgstr ""
@@ -59,7 +59,7 @@ msgstr "Parola Gir..."
 
 #: src/process.c:74
 msgid "File Decryped &amp; Saved to Documents!"
-msgstr "Dosya Şifresi Çözüldü ve Belgeler Kaydedildi!"
+msgstr "Dosya Şifresi Çözüldü ve Belgelerʼe Kaydedildi!"
 
 #: src/process.c:80
 msgid "Invalid Password!"
