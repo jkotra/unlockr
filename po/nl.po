@@ -1,0 +1,65 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2022-07-18 19:40+0530\n"
+"PO-Revision-Date: 2023-03-02 15:22+0100\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.2.2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: src\n"
+"X-Poedit-SearchPath-1: data\n"
+
+#: src/main.c:50
+#, c-format
+msgid "<span size=\"large\">%s is <span weight=\"bold\">%s.</span></span>"
+msgstr "<span size=\"large\">%s is <span weight=\"bold\">%s.</span></span>"
+
+#: src/main.c:54
+msgid "Encrypted"
+msgstr "vergrendeld"
+
+#: src/main.c:54
+msgid "Not Encrypted"
+msgstr "onvergrendeld"
+
+#: src/main.c:80
+msgid "Select PDF Files"
+msgstr "Kies pdf-bestanden"
+
+#: src/main.c:81
+msgid "Select"
+msgstr "Kiezen"
+
+#: src/main.c:81 src/main.c:142
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: src/main.c:123
+msgid "About"
+msgstr "Over"
+
+#: src/main.c:197
+msgid "Choose a File..."
+msgstr "Kies een bestand…"
+
+#: src/process.c:32
+msgid "Enter Password..."
+msgstr "Voer het wachtwoord in…"
+
+#: src/process.c:74
+msgid "File Decryped &amp; Saved to Documents!"
+msgstr "Het bestand is ontgrendeld en opgeslagen in de documentenmap!"
+
+#: src/process.c:80
+msgid "Invalid Password!"
+msgstr "Het wachtwoord is ongeldig!"
+
+#: src/process.c:111
+msgid "Decrypt"
+msgstr "Ontgrendelen"
