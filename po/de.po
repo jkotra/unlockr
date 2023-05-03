@@ -1,0 +1,65 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2022-07-18 19:40+0530\n"
+"PO-Revision-Date: 2023-05-03 12:35+0200\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: src\n"
+"X-Poedit-SearchPath-1: data\n"
+
+#: src/main.c:50
+#, c-format
+msgid "<span size=\"large\">%s is <span weight=\"bold\">%s.</span></span>"
+msgstr "<span size=\"large\">%s ist <span weight=\"bold\">%s.</span></span>"
+
+#: src/main.c:54
+msgid "Encrypted"
+msgstr "verschlüsselt"
+
+#: src/main.c:54
+msgid "Not Encrypted"
+msgstr "nicht verschlüsselt"
+
+#: src/main.c:80
+msgid "Select PDF Files"
+msgstr "PDF-Dateien auswählen"
+
+#: src/main.c:81
+msgid "Select"
+msgstr "Auswählen"
+
+#: src/main.c:81 src/main.c:142
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: src/main.c:123
+msgid "About"
+msgstr "Über"
+
+#: src/main.c:197
+msgid "Choose a File..."
+msgstr "Datei wählen …"
+
+#: src/process.c:32
+msgid "Enter Password..."
+msgstr "Passwort eingeben …"
+
+#: src/process.c:74
+msgid "File Decryped &amp; Saved to Documents!"
+msgstr "Datei entschlüsselt und im Ordner Dokumente gespeichert!"
+
+#: src/process.c:80
+msgid "Invalid Password!"
+msgstr "Ungültiges Passwort!"
+
+#: src/process.c:111
+msgid "Decrypt"
+msgstr "Entschlüsseln"

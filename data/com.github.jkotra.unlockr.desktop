@@ -2,6 +2,8 @@
 Name=unlockR
 GenericName=unlockR
 Comment=PDF Decryptor
+Comment[de]=PDF-Entschlüsseler
+Comment[hr]=Dešifriranje PDF datoteka
 Icon=com.github.jkotra.unlockr
 Exec=unlockr
 Terminal=false
