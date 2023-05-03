@@ -6,9 +6,13 @@
     <developer_name>Jagadeesh Kotra</developer_name>
     <name>unlockR</name>
     <summary>PDF Password remover</summary>
+    <summary xml:lang="de">PDF-Passwort Entferner</summary>
+    <summary xml:lang="hr">Uklanjanje lozinki iz PDF datoteka</summary>
 
     <description>
         <p>unlockR is a simple app to unlock / decrypt PDF files.</p>
+        <p xml:lang="de">unlockR ist eine einfache App zum Entsperren/Entschlüsseln von PDF-Dateien</p>
+        <p xml:lang="hr">unlockR je jednostavna aplikacija za otključavanje/dešifriranje PDF datoteka</p>
     </description>
 
     <kudos>
