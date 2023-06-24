@@ -47,7 +47,7 @@ send_toast (char *message)
     {
       Pwidgets.toasts =
           realloc (Pwidgets.toasts, (Pwidgets.n_toasts) * sizeof (GObject));
-      g_debug ("%s for n=%zu\n", "toast mem allocated!", Pwidgets.n_toasts);
+      g_debug ("toast mem allocated for n=%zu\n", Pwidgets.n_toasts);
     }
 
   Pwidgets.toasts[Pwidgets.n_toasts] = toast;
@@ -79,10 +79,10 @@ on_decrypt_btn_clicked (GtkWidget *btn, gpointer user_data)
   const gchar *home = g_get_home_dir ();
   const gchar *docs_dir = g_get_user_special_dir (G_USER_DIRECTORY_DOCUMENTS);
   gchar *out = g_build_filename (docs_dir, Pfile->name, NULL);
-  g_debug ("out = %s", out);
   bool result = decryptPDF (Pfile->path, (char *) out, (char *) text);
   if (result)
     {
+      g_debug ("out = %s", out);
       set_toast_color_to_green (Pwidgets.toast_overlay);
       send_toast (gettext ("File Decryped &amp; Saved to Documents!"));
       Pfile->decrypt_status = true;
@@ -90,10 +90,10 @@ on_decrypt_btn_clicked (GtkWidget *btn, gpointer user_data)
       // dismiss queued toasts
       for (size_t i = 0; i < Pwidgets.n_toasts - 1; i++)
         {
-          const char *title =
-              adw_toast_get_title (ADW_TOAST (Pwidgets.toasts[i]));
-          g_debug ("dismissed toast title  = %s n=(%zu)\n", title, i);
-          adw_toast_dismiss (ADW_TOAST (Pwidgets.toasts[i]));
+          AdwToast *toast = ADW_TOAST (Pwidgets.toasts[i]);
+          g_debug ("dismissed toast title = %s | n=(%zu)\n",
+                   adw_toast_get_title (toast), i);
+          adw_toast_dismiss (toast);
         }
       Pwidgets.n_toasts = 0;
     }

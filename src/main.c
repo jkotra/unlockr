@@ -85,34 +85,32 @@ on_drop (GtkDropTarget *target,
 }
 
 void
-on_file_chosen (GtkNativeDialog *native, int response)
+on_file_chosen (GtkFileDialog *dialog, GAsyncResult *res, gpointer data)
 {
-  if (response == GTK_RESPONSE_ACCEPT)
+  GFile *chosen_file = gtk_file_dialog_open_finish (dialog, res, NULL);
+  if (!chosen_file)
     {
-      GFile *chosen_file =
-          gtk_file_chooser_get_file (GTK_FILE_CHOOSER (native));
-      char *chosen_path = g_file_get_path (chosen_file);
-
-      file.name = g_file_get_basename (chosen_file);
-      file.path = chosen_path;
-      file.decrypt_status = isFileEncrypted (file.path);
-
-      setup_process_for_file ();
+      return;
     }
+  char *chosen_path = g_file_get_path (chosen_file);
+
+  file.name = g_file_get_basename (chosen_file);
+  file.path = chosen_path;
+  file.decrypt_status = isFileEncrypted (file.path);
+
+  setup_process_for_file ();
 }
 
 void
-choose_file (GtkWidget *btn, gpointer data)
+choose_file (GtkWidget *btn, GtkWindow *window)
 {
-  GtkFileChooserNative *filechooser = gtk_file_chooser_native_new (
-      gettext ("Select PDF Files"), GTK_WINDOW (widgets.main_window),
-      GTK_FILE_CHOOSER_ACTION_OPEN, gettext ("Select"), gettext ("Cancel"));
+  GtkFileDialog *filechooser = gtk_file_dialog_new ();
   GtkFileFilter *filter = gtk_file_filter_new ();
   gtk_file_filter_set_name (filter, "*.PDF");
   gtk_file_filter_add_suffix (filter, "pdf");
-  gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (filechooser), filter);
-  g_signal_connect (filechooser, "response", G_CALLBACK (on_file_chosen), NULL);
-  gtk_native_dialog_show (GTK_NATIVE_DIALOG (filechooser));
+  gtk_file_dialog_set_default_filter (filechooser, filter);
+  gtk_file_dialog_open (filechooser, window, NULL,
+                        (GAsyncReadyCallback) on_file_chosen, NULL);
 }
 
 void
@@ -242,7 +240,8 @@ on_activate (GtkApplication *app)
   add_class_to_widget (choose_btn, "choose-btn");
   widgets.choose_button = choose_btn;
 
-  g_signal_connect (choose_btn, "clicked", G_CALLBACK (choose_file), NULL);
+  g_signal_connect (choose_btn, "clicked", G_CALLBACK (choose_file),
+                    app_window);
 
   gtk_window_present (GTK_WINDOW (app_window));
 }

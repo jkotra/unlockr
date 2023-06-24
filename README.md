@@ -28,13 +28,9 @@ QPDF
 ### Flatpak
 
 
-```
-flatpak-builder --user --install build-dir dist/flatpak/com.github.jkotra.unlockr.yml --force-clean
-```
-
 to build from local directory, use:
 ```
-flatpak-builder --user --install build-dir dist/flatpak/local.yml --force-clean
+flatpak-builder --user --install build-dir dist/flatpak/com.github.jkotra.unlockr.yml --force-clean
 ```
 
 ---

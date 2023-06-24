@@ -10,11 +10,6 @@
     margin-bottom: 16px;
 }
 
-.choose_btn {
-    margin-left: 24px;
-    margin-right: 24px;
-}
-
 .green_toast toast {
     background-color: @green_4;
 }
@@ -29,13 +24,9 @@
 }
 
 .file-label {
-    margin-left: 4px;
-    margin-right: 4px;
+    margin: 0 4px;
 }
 
 .choose-btn {
-    margin-top: 24px;
-    margin-left: 16px;
-    margin-bottom: 24px;
-    margin-right: 16px;
+    margin: 24px 16px;
 }

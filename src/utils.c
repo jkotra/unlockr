@@ -4,17 +4,13 @@
 void
 add_class_to_widget (GtkWidget *widget, char *class_name)
 {
-
-  GtkStyleContext *style_ctx = gtk_widget_get_style_context (widget);
-  gtk_style_context_add_class (style_ctx, class_name);
+  gtk_widget_add_css_class (widget, class_name);
 };
 
 void
 remove_class_from_widget (GtkWidget *widget, char *class_name)
 {
-
-  GtkStyleContext *style_ctx = gtk_widget_get_style_context (widget);
-  gtk_style_context_remove_class (style_ctx, class_name);
+  gtk_widget_remove_css_class (widget, class_name);
 };
 
 void
