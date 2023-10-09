@@ -61,7 +61,11 @@
     </provides>
 
     <releases>
-
+		<release version="0.8.1" date="2023-06-24">
+			<p>refactor: use single yaml for flatpak build.</p>
+			<p>refactor: improve css</p>
+			<p>refactor: improve debug logging</p>
+		</release>
         <release version="0.07" date="2022-10-12">
             <description>
                 <ul>
