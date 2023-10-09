@@ -4,9 +4,15 @@
 #include "main.h"
 #include "utils.h"
 #include "libunlockr.h"
+#include <stdarg.h>
 
 struct ProcessPageWidgets Pwidgets = { 0 };
 struct File *Pfile;
+GtkWindow *window;
+const char *text;
+bool result;
+gchar *out;
+
 
 void
 set_file (struct File *_file)
@@ -34,59 +40,68 @@ set_input_placeholder (GtkWidget *input)
   g_object_set_property (G_OBJECT (input), "placeholder-text", &a);
 }
 
-void
-send_toast (char *message)
-{
+void send_toast(char *message, ...) {
+  va_list args;
+  va_start(args, message);
+  char *path = NULL;
+  if (message != NULL) {
+    path = va_arg(args, char *);
+  }
+  va_end(args);
 
-  AdwToast *toast = adw_toast_new (message);
-  set_toast_priority (toast);
-  adw_toast_overlay_add_toast (ADW_TOAST_OVERLAY (Pwidgets.toast_overlay),
-                               toast);
+  AdwToast *toast;
+  if (path != NULL) {
+    toast = adw_toast_new_format(message, path);
+  } else {
+    toast = adw_toast_new(message);
+  }
 
-  if (Pwidgets.n_toasts > 0)
-    {
-      Pwidgets.toasts =
-          realloc (Pwidgets.toasts, (Pwidgets.n_toasts) * sizeof (GObject));
-      g_debug ("toast mem allocated for n=%zu\n", Pwidgets.n_toasts);
-    }
+  set_toast_priority(toast);
+  adw_toast_overlay_add_toast(ADW_TOAST_OVERLAY(Pwidgets.toast_overlay), toast);
+
+  // Increase the size of Pwidgets.toasts array to accommodate the new toast
+  Pwidgets.toasts = realloc(Pwidgets.toasts, (Pwidgets.n_toasts + 1) * sizeof(GObject));
+  if (Pwidgets.toasts == NULL) {
+    // Handle memory allocation failure
+    g_debug("Memory allocation failed for toasts array.\n");
+    return;
+  }
 
   Pwidgets.toasts[Pwidgets.n_toasts] = toast;
   Pwidgets.n_toasts++;
 }
+
 
 void
 on_password_changed (GtkWidget *password_entry, gpointer user_data)
 {
   const char *text = gtk_editable_get_text (GTK_EDITABLE (password_entry));
   g_debug ("%s", text);
-  if (strlen (text) < 1)
-    {
-      gtk_widget_set_sensitive (Pwidgets.decrypt_btn, FALSE);
-    }
-  else
-    {
-      gtk_widget_set_sensitive (Pwidgets.decrypt_btn, TRUE);
-    }
+  (strlen (text) < 1) ? gtk_widget_set_sensitive (Pwidgets.decrypt_btn, FALSE) : gtk_widget_set_sensitive (Pwidgets.decrypt_btn, TRUE);
 }
 
 void
-on_decrypt_btn_clicked (GtkWidget *btn, gpointer user_data)
+on_folder_chosen (GtkFileDialog *dialog, GAsyncResult *res, gpointer data)
 {
-
-  const char *text =
-      gtk_editable_get_text (GTK_EDITABLE (Pwidgets.password_input));
-
   const gchar *home = g_get_home_dir ();
-  const gchar *docs_dir = g_get_user_special_dir (G_USER_DIRECTORY_DOCUMENTS);
-  gchar *out = g_build_filename (docs_dir, Pfile->name, NULL);
-  bool result = decryptPDF (Pfile->path, (char *) out, (char *) text);
+  GFile *chosen_folder =
+      gtk_file_dialog_select_folder_finish (dialog, res, NULL);
+  if (!g_file_get_path (chosen_folder))
+    {
+      set_toast_color_to_red (Pwidgets.toast_overlay);
+      send_toast (gettext ("Folder not selected"));
+      return;
+    }
+  out = g_build_filename (g_file_get_path (chosen_folder), Pfile->name, NULL);
+  result = decryptPDF (Pfile->path, (char *) out, (char *) text);
   if (result)
     {
       g_debug ("out = %s", out);
       set_toast_color_to_green (Pwidgets.toast_overlay);
-      send_toast (gettext ("File Decryped &amp; Saved to Documents!"));
+      char *toast_message =
+          gettext ("File Decryped &amp; Saved to %s");
+      send_toast (toast_message, g_path_get_basename(g_file_get_path (chosen_folder)));
       Pfile->decrypt_status = true;
-
       // dismiss queued toasts
       for (size_t i = 0; i < Pwidgets.n_toasts - 1; i++)
         {
@@ -97,12 +112,23 @@ on_decrypt_btn_clicked (GtkWidget *btn, gpointer user_data)
         }
       Pwidgets.n_toasts = 0;
     }
-  else
+  else 
     {
       set_toast_color_to_red (Pwidgets.toast_overlay);
       send_toast (gettext ("Invalid Password!"));
     }
   g_free (out);
+}
+
+void
+on_decrypt_btn_clicked (GtkWidget *btn, gpointer user_data)
+{
+
+  text =
+      gtk_editable_get_text (GTK_EDITABLE (Pwidgets.password_input));
+  GtkFileDialog *folderchooser = gtk_file_dialog_new ();
+  gtk_file_dialog_select_folder (folderchooser, window, NULL,
+                                 (GAsyncReadyCallback) on_folder_chosen, NULL);
 }
 
 struct ProcessPageWidgets
