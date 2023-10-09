@@ -3,13 +3,14 @@ project('com.github.jkotra.unlockr' , 'c',
     meson_version: '>= 0.58.0',
   default_options:  [ 'warning_level=2',
                       'c_std=gnu11',
-                      'werror=true',
+                      'werror=true'
                     ],
 )
 
 add_global_arguments([
                       '-Wno-unused-variable',
-                      '-Wno-unused-parameter'
+                      '-Wno-unused-parameter',
+                      '-Wno-deprecated-declarations',
                       ],
                      language: 'c')
 
