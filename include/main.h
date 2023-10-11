@@ -1,5 +1,6 @@
 struct ProcessPageWidgets
 {
+  GtkWidget *main_window;
   GtkWidget *file_label;
   GtkWidget *password_input;
   GtkWidget *decrypt_btn;

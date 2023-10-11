@@ -46,8 +46,8 @@ send_toast (char *message)
   if (Pwidgets.n_toasts > 0)
     {
       Pwidgets.toasts =
-          realloc (Pwidgets.toasts, (Pwidgets.n_toasts) * sizeof (GObject));
-      g_debug ("toast mem allocated for n=%zu\n", Pwidgets.n_toasts);
+          realloc (Pwidgets.toasts, (Pwidgets.n_toasts + 1) * sizeof (GObject));
+      g_debug ("toast mem allocated for n = %zu\n", Pwidgets.n_toasts);
     }
 
   Pwidgets.toasts[Pwidgets.n_toasts] = toast;
@@ -70,43 +70,79 @@ on_password_changed (GtkWidget *password_entry, gpointer user_data)
 }
 
 void
-on_decrypt_btn_clicked (GtkWidget *btn, gpointer user_data)
+dismiss_toasts ()
 {
-
-  const char *text =
-      gtk_editable_get_text (GTK_EDITABLE (Pwidgets.password_input));
-
-  const gchar *home = g_get_home_dir ();
-  const gchar *docs_dir = g_get_user_special_dir (G_USER_DIRECTORY_DOCUMENTS);
-  gchar *out = g_build_filename (docs_dir, Pfile->name, NULL);
-  bool result = decryptPDF (Pfile->path, (char *) out, (char *) text);
-  if (result)
+  for (size_t i = 0; i < Pwidgets.n_toasts - 1; i++)
     {
-      g_debug ("out = %s", out);
-      set_toast_color_to_green (Pwidgets.toast_overlay);
-      send_toast (gettext ("File Decryped &amp; Saved to Documents!"));
-      Pfile->decrypt_status = true;
-
-      // dismiss queued toasts
-      for (size_t i = 0; i < Pwidgets.n_toasts - 1; i++)
+      AdwToast *toast = ADW_TOAST (Pwidgets.toasts[i]);
+      if (adw_toast_get_title (toast) != NULL)
         {
-          AdwToast *toast = ADW_TOAST (Pwidgets.toasts[i]);
           g_debug ("dismissed toast title = %s | n=(%zu)\n",
                    adw_toast_get_title (toast), i);
           adw_toast_dismiss (toast);
         }
-      Pwidgets.n_toasts = 0;
+    }
+  Pwidgets.n_toasts = 0;
+}
+
+void
+on_output_folder_chosen (GtkFileDialog *dialog,
+                         GAsyncResult *res,
+                         char *password)
+{
+  GFile *folder = gtk_file_dialog_select_folder_finish (dialog, res, NULL);
+
+  //  write output to selected folder.
+  char *path = g_file_get_path (folder);
+  gchar *output_path = g_build_filename (path, Pfile->name, NULL);
+  decryptPDF (Pfile->path, (char *) output_path, password);
+  dismiss_toasts ();
+  set_toast_color_to_green (Pwidgets.toast_overlay);
+  send_toast (g_strdup_printf (gettext ("File Decryped &amp; Saved to %s!"),
+                               g_file_get_basename (folder)));
+}
+
+void
+on_decrypt_btn_clicked (GtkWidget *btn, GSettings *settings)
+{
+
+  const char *password =
+      gtk_editable_get_text (GTK_EDITABLE (Pwidgets.password_input));
+
+  const gchar *home = g_get_home_dir ();
+  const gchar *docs_dir = g_get_user_special_dir (G_USER_DIRECTORY_DOCUMENTS);
+  gchar *default_out = g_build_filename (docs_dir, Pfile->name, NULL);
+  bool decrypt_result = verifyPassword (Pfile->path, (char *) password);
+  if (decrypt_result)
+    {
+      // log & update
+      Pfile->decrypt_status = true;
+
+      if (g_settings_get_boolean (settings, "save-to-folder"))
+        {
+          GtkFileDialog *fdialog = gtk_file_dialog_new ();
+          gtk_file_dialog_select_folder (
+              fdialog, GTK_WINDOW (Pwidgets.main_window), NULL,
+              (GAsyncReadyCallback) on_output_folder_chosen, (char *) password);
+        }
+      else
+        {
+          decryptPDF (Pfile->path, (char *) default_out, (char *) password);
+          dismiss_toasts ();
+          set_toast_color_to_green (Pwidgets.toast_overlay);
+          send_toast (gettext ("File Decryped &amp; Saved to Documents!"));
+        }
     }
   else
     {
       set_toast_color_to_red (Pwidgets.toast_overlay);
       send_toast (gettext ("Invalid Password!"));
     }
-  g_free (out);
+  g_free (default_out);
 }
 
 struct ProcessPageWidgets
-construct_process (GtkWidget *box)
+construct_process (GtkWidget *box, GtkWidget *window, GSettings *settings)
 {
 
   Pwidgets.toasts = malloc (1 * sizeof (GObject));
@@ -140,7 +176,7 @@ construct_process (GtkWidget *box)
   GtkWidget *decrypt_button = gtk_button_new_with_label (gettext ("Decrypt"));
   add_class_to_widget (decrypt_button, "suggested-action");
   g_signal_connect (decrypt_button, "clicked",
-                    G_CALLBACK (on_decrypt_btn_clicked), NULL);
+                    G_CALLBACK (on_decrypt_btn_clicked), settings);
   gtk_widget_set_sensitive (decrypt_button, FALSE);
   add_class_to_widget (decrypt_button, "m-12");
 
@@ -149,6 +185,7 @@ construct_process (GtkWidget *box)
 
   gtk_box_append (GTK_BOX (bottom_box), decrypt_button);
 
+  Pwidgets.main_window = window;
   Pwidgets.file_label = file_label;
   Pwidgets.password_input = password_input;
   Pwidgets.decrypt_btn = decrypt_button;
