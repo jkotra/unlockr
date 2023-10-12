@@ -72,7 +72,8 @@ on_password_changed (GtkWidget *password_entry, gpointer user_data)
 void
 dismiss_toasts ()
 {
-  for (size_t i = 0; i < Pwidgets.n_toasts - 1; i++)
+  for (size_t i = 0; i < (Pwidgets.n_toasts - 1) && (Pwidgets.n_toasts > 0);
+       i++)
     {
       AdwToast *toast = ADW_TOAST (Pwidgets.toasts[i]);
       if (adw_toast_get_title (toast) != NULL)
@@ -100,6 +101,7 @@ on_output_folder_chosen (GtkFileDialog *dialog,
   set_toast_color_to_green (Pwidgets.toast_overlay);
   send_toast (g_strdup_printf (gettext ("File Decryped &amp; Saved to %s!"),
                                g_file_get_basename (folder)));
+  // g_free (output_path);
 }
 
 void
