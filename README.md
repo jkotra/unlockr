@@ -44,7 +44,9 @@ flatpak-builder --user --install build-dir dist/flatpak/com.github.jkotra.unlock
 pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-gtk4 mingw-w64-x86_64-libadwaita mingw-w64-x86_64-qpdf mingw-w64-x86_64-pkg-config
 ```
 
-
+```
+./run_program_debug.ps1
+```
 
 to import dll dependencies, run in `msys2.exe`:
 

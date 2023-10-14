@@ -6,6 +6,7 @@ from pathlib import Path
 LDD = "C:/msys64/usr/bin/ldd.exe"
 MINGW_W64_BIN_DIR = Path("C:/msys64/mingw64/bin")
 
+shutil.copyfile("C:/msys64/mingw64/share/glib-2.0/schemas/gschemas.compiled", "build/src/gschemas.compiled")
 shutil.copyfile("build/subprojects/libunlockr/libunlockr.dll", "build/src/libunlockr.dll")
 out = subprocess.run([LDD, "build/src/unlockr.exe"], stdout=subprocess.PIPE)
 for lib in out.stdout.decode("utf-8").strip().split("\n"):
