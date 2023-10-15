@@ -194,6 +194,14 @@ on_activate (GtkApplication *app)
       gtk_widget_add_css_class (app_window, "devel");
     }
 
+#ifdef _WIN32
+  if (!set_gsettings_env_var_win32 ())
+    {
+      g_error ("unable to set GSETTINGS_SCHEMA_DIR");
+      exit (1);
+    }
+#endif
+
   settings = g_settings_new (APP_ID);
 
   GtkWidget *header_bar = adw_header_bar_new ();

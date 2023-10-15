@@ -55,6 +55,8 @@ to import dll dependencies, run in `msys2.exe`:
 
 * Or, run `windows_portable.py`
 
+WSL2 tip: `git add . --ignore-space-at-eol`
+
 # License
 
 unlockR is licensed under [GPLv3](LICENSE).
