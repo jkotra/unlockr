@@ -31,7 +31,7 @@ endif
 
 incdir = include_directories('../include')
 
-w_subsystem = 'gui'
+w_subsystem = 'windows,6.0'
 
 if get_option('wdebug')
   w_subsystem = 'console'
