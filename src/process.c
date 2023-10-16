@@ -97,11 +97,13 @@ on_output_folder_chosen (GtkFileDialog *dialog,
   char *path = g_file_get_path (folder);
   gchar *output_path = g_build_filename (path, Pfile->name, NULL);
   decryptPDF (Pfile->path, (char *) output_path, password);
+  g_debug ("decrypted file saved to: %s", output_path);
   dismiss_toasts ();
   set_toast_color_to_green (Pwidgets.toast_overlay);
   send_toast (g_strdup_printf (gettext ("File Decryped &amp; Saved to %s!"),
                                g_file_get_basename (folder)));
-  // g_free (output_path);
+  free (path);
+  free (output_path);
 }
 
 void
