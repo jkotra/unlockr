@@ -1,19 +1,17 @@
 #!/usr/bin/env python3
-
 from os import environ, path
 import platform
 from subprocess import call
+import platform
 
-from os import environ, path
-from subprocess import call
+print("post install script...")
 
 prefix = environ.get('MESON_INSTALL_PREFIX', '/usr/local')
 datadir = path.join(prefix, 'share')
 destdir = environ.get('DESTDIR', '')
+print(prefix, datadir, destdir)
 
-print(datadir)
-
-if not destdir and platform.system() == "linux":
+if "linux" in platform.platform().lower():
     print('Updating icon cache...')
     call(['gtk-update-icon-cache', '-qtf', path.join(datadir, 'icons', 'hicolor')])
     print("Installing new Schemas")

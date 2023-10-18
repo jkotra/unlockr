@@ -11,6 +11,7 @@
 
 AppWidgets widgets = { 0 };
 struct File file = { 0 };
+GSettings *settings;
 
 void
 hello_world (GtkWidget *widget, gpointer *userdata)
@@ -125,6 +126,16 @@ inject_css ()
       GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 }
 
+static void
+on_save_to_folder_checked (GAction *state)
+{
+  int current = g_variant_get_boolean (g_action_get_state (state));
+  g_debug ("save to folder checkbox status = %d", current);
+  g_simple_action_set_state (G_SIMPLE_ACTION (state),
+                             g_variant_new_boolean (!current));
+  g_settings_set_boolean (settings, "save-to-folder", !current);
+}
+
 void
 construct_popover_menu (GtkApplication *app,
                         GtkWidget *window,
@@ -148,7 +159,22 @@ construct_popover_menu (GtkApplication *app,
 
   GMenuItem *m_item = g_menu_item_new (gettext ("About"), "about");
   g_menu_item_set_action_and_target_value (m_item, "app.about", NULL);
+
   g_menu_append_item (menu, m_item);
+
+  GVariant *default_val = g_variant_new_boolean (
+      g_settings_get_boolean (settings, "save-to-folder"));
+  GSimpleAction *checkbox_action =
+      g_simple_action_new_stateful ("save_to_folder", NULL, default_val);
+  GMenuItem *m_item_checkbox =
+      g_menu_item_new ("Save To Folder", "app.save_to_folder");
+  g_action_map_add_action (G_ACTION_MAP (app), G_ACTION (checkbox_action));
+  const gchar *accls_save_to_folder[] = { (gchar *) "<Primary>F", NULL };
+  gtk_application_set_accels_for_action (app, "app.save_to_folder",
+                                         accls_save_to_folder);
+  g_signal_connect (checkbox_action, "change-state",
+                    G_CALLBACK (on_save_to_folder_checked), NULL);
+  g_menu_append_item (menu, m_item_checkbox);
 
   adw_header_bar_pack_end (ADW_HEADER_BAR (header_bar), GTK_WIDGET (menu_btn));
 }
@@ -167,6 +193,16 @@ on_activate (GtkApplication *app)
     {
       gtk_widget_add_css_class (app_window, "devel");
     }
+
+#ifdef _WIN32
+  if (!set_gsettings_env_var_win32 ())
+    {
+      g_error ("unable to set GSETTINGS_SCHEMA_DIR");
+      exit (1);
+    }
+#endif
+
+  settings = g_settings_new (APP_ID);
 
   GtkWidget *header_bar = adw_header_bar_new ();
   construct_popover_menu (app, app_window, header_bar);
@@ -223,7 +259,8 @@ on_activate (GtkApplication *app)
   widgets.welcome_box = welcome_box;
   widgets.process_box = process_box;
 
-  widgets.process_widgets = construct_process (process_box);
+  widgets.process_widgets =
+      construct_process (process_box, app_window, settings);
 
   GtkWidget *_logo =
       gtk_image_new_from_resource ("/com/github/jkotra/unlockr/icons/hero.png");

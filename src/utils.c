@@ -1,6 +1,31 @@
 #include <adwaita.h>
 #include "main.h"
 
+#ifdef _WIN32
+#include <windows.h>
+
+bool
+set_gsettings_env_var_win32 ()
+{
+  HMODULE hModule = GetModuleHandle (NULL);
+  if (hModule)
+    {
+      char modulePath[MAX_PATH];
+      if (GetModuleFileName (hModule, modulePath, sizeof (modulePath)))
+        {
+          GFile *file = g_file_new_for_path (modulePath);
+          char *dir = g_file_get_path (g_file_get_parent (file));
+          g_debug ("exe dir = %s", dir);
+          SetEnvironmentVariable ("GSETTINGS_SCHEMA_DIR", dir);
+          free (dir);
+          g_object_unref (file);
+          return TRUE;
+        }
+    }
+  return FALSE;
+}
+#endif
+
 void
 add_class_to_widget (GtkWidget *widget, char *class_name)
 {

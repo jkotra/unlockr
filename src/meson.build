@@ -31,11 +31,17 @@ endif
 
 incdir = include_directories('../include')
 
-#Note - win_subsystem: 'windows,6.0' is required to hide CMD window.
+w_subsystem = 'windows,6.0'
+
+if get_option('wdebug')
+  w_subsystem = 'console'
+endif
+
+#Note - win_subsystem: 'windows,6.0' / 'gui' is required to hide CMD window.
 executable('unlockr', sources,
 dependencies: deps,
 include_directories : incdir,
 install: true,
 link_with: so,
-win_subsystem: 'windows,6.0'
+win_subsystem: w_subsystem
 )

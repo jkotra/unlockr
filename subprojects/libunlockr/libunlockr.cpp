@@ -53,3 +53,20 @@ decryptPDF (char *filepath, char *out, char *password)
       return NULL;
     }
 }
+
+extern "C" bool
+verifyPassword (char *filepath, char *password)
+{
+  QPDF qpdf;
+
+  try
+    {
+      qpdf.processFile (filepath, password);
+      return true;
+    }
+  catch (std::exception &err)
+    {
+      g_warning ("%s", err.what ());
+      return false;
+    }
+}
