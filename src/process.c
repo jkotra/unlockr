@@ -92,7 +92,10 @@ on_output_folder_chosen (GtkFileDialog *dialog,
                          char *password)
 {
   GFile *folder = gtk_file_dialog_select_folder_finish (dialog, res, NULL);
-
+  if (folder == NULL)
+    {
+      return;
+    }
   //  write output to selected folder.
   char *path = g_file_get_path (folder);
   gchar *output_path = g_build_filename (path, Pfile->name, NULL);
