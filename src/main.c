@@ -160,8 +160,6 @@ construct_popover_menu (GtkApplication *app,
   GMenuItem *m_item = g_menu_item_new (gettext ("About unlockR"), "about");
   g_menu_item_set_action_and_target_value (m_item, "app.about", NULL);
 
-  g_menu_append_item (menu, m_item);
-
   GVariant *default_val = g_variant_new_boolean (
       g_settings_get_boolean (settings, "save-to-folder"));
   GSimpleAction *checkbox_action =
@@ -174,7 +172,9 @@ construct_popover_menu (GtkApplication *app,
                                          accls_save_to_folder);
   g_signal_connect (checkbox_action, "change-state",
                     G_CALLBACK (on_save_to_folder_checked), NULL);
+
   g_menu_append_item (menu, m_item_checkbox);
+  g_menu_append_item (menu, m_item);
 
   adw_header_bar_pack_end (ADW_HEADER_BAR (header_bar), GTK_WIDGET (menu_btn));
 }
