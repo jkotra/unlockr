@@ -1,0 +1,86 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-04 21:10+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Translators: It's the application name. Keep as unlockR!
+#: data/com.github.jkotra.unlockr.desktop.in:4
+#: data/com.github.jkotra.unlockr.desktop.in:5
+msgid "unlockR"
+msgstr ""
+
+#: data/com.github.jkotra.unlockr.desktop.in:6
+msgid "PDF Decryptor"
+msgstr ""
+
+#: data/com.github.jkotra.unlockr.metainfo.xml.in:8
+msgid "PDF Password remover"
+msgstr ""
+
+#: data/com.github.jkotra.unlockr.metainfo.xml.in:11
+msgid "unlockR is a simple app to unlock / decrypt PDF files."
+msgstr ""
+
+#: src/main.c:46
+#, c-format
+msgid "<span size=\"large\">%s is <span weight=\"bold\">%s.</span></span>"
+msgstr ""
+
+#: src/main.c:50
+msgid "Encrypted"
+msgstr ""
+
+#: src/main.c:50
+msgid "Not Encrypted"
+msgstr ""
+
+#: src/main.c:160
+msgid "About unlockR"
+msgstr ""
+
+#: src/main.c:168
+msgid "Save To Folder"
+msgstr ""
+
+#: src/main.c:210
+msgid "Cancel"
+msgstr ""
+
+#: src/main.c:274
+msgid "Choose a File..."
+msgstr ""
+
+#: src/process.c:32
+msgid "Enter Password..."
+msgstr ""
+
+#: src/process.c:106
+#, c-format
+msgid "File Decryped &amp; Saved to %s!"
+msgstr ""
+
+#: src/process.c:140
+msgid "File Decryped &amp; Saved to Documents!"
+msgstr ""
+
+#: src/process.c:146
+msgid "Invalid Password!"
+msgstr ""
+
+#: src/process.c:183
+msgid "Decrypt"
+msgstr ""
