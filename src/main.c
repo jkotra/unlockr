@@ -167,7 +167,7 @@ construct_popover_menu (GtkApplication *app,
   GSimpleAction *checkbox_action =
       g_simple_action_new_stateful ("save_to_folder", NULL, default_val);
   GMenuItem *m_item_checkbox =
-      g_menu_item_new ("Save To Folder", "app.save_to_folder");
+      g_menu_item_new (gettext ("Save To Folder"), "app.save_to_folder");
   g_action_map_add_action (G_ACTION_MAP (app), G_ACTION (checkbox_action));
   const gchar *accls_save_to_folder[] = { (gchar *) "<Primary>F", NULL };
   gtk_application_set_accels_for_action (app, "app.save_to_folder",
