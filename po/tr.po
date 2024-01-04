@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: master\n"
 "Report-Msgid-Bugs-To: https://github.com/jkotra/unlockr/issues\n"
-"POT-Creation-Date: 2022-07-18 19:40+0530\n"
-"PO-Revision-Date: 2022-08-03 21:09+0300\n"
+"POT-Creation-Date: 2024-01-04 21:10+0300\n"
+"PO-Revision-Date: 2024-01-04 21:14+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Türkçe <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -17,39 +17,55 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. Translators: It's the application name. Keep as unlockR!
+#: data/com.github.jkotra.unlockr.desktop.in:4
+#: data/com.github.jkotra.unlockr.desktop.in:5
+msgid "unlockR"
+msgstr "unlockR"
+
+#: data/com.github.jkotra.unlockr.desktop.in:6
+msgid "PDF Decryptor"
+msgstr "PDF Şifre Çözücü"
+
+#: data/com.github.jkotra.unlockr.metainfo.xml.in:8
+msgid "PDF Password remover"
+msgstr "PDF Parola Kaldırıcı"
+
+#: data/com.github.jkotra.unlockr.metainfo.xml.in:11
+msgid "unlockR is a simple app to unlock / decrypt PDF files."
+msgstr ""
+"unlockR, PDF dosyalarının kilidini açmak / şifrelerini çözmek için basit bir "
+"uygulamadır."
 
 # Dosya adı şifrelenmiş/şifrelenmemiş metnini oluşturan bölünmüş bir cümle.
-#: src/main.c:50
+#: src/main.c:46
 #, c-format
 msgid "<span size=\"large\">%s is <span weight=\"bold\">%s.</span></span>"
 msgstr "<span size=\"large\">%s <span weight=\"bold\">%s.</span></span>"
 
-#: src/main.c:54
+#: src/main.c:50
 msgid "Encrypted"
 msgstr "Şifrelenmiş"
 
-#: src/main.c:54
+#: src/main.c:50
 msgid "Not Encrypted"
 msgstr "Şifrelenmemiş"
 
-#: src/main.c:80
-msgid "Select PDF Files"
-msgstr "PDF Dosyaları Seç"
+#: src/main.c:160
+msgid "About unlockR"
+msgstr "unlockR Hakkında"
 
-#: src/main.c:81
-msgid "Select"
-msgstr "Seç"
+#: src/main.c:168
+msgid "Save To Folder"
+msgstr "Klasöre Kaydet"
 
-#: src/main.c:81 src/main.c:142
+#: src/main.c:210
 msgid "Cancel"
-msgstr "İptal Et"
+msgstr "İptal"
 
-#: src/main.c:123
-msgid "About"
-msgstr "Hakkında"
-
-#: src/main.c:197
+#: src/main.c:274
 msgid "Choose a File..."
 msgstr "Dosya Seç..."
 
@@ -57,14 +73,28 @@ msgstr "Dosya Seç..."
 msgid "Enter Password..."
 msgstr "Parola Gir..."
 
-#: src/process.c:74
+#: src/process.c:106
+#, c-format
+msgid "File Decryped &amp; Saved to %s!"
+msgstr "Dosya Şifresi Çözüldü ve %sʼe Kaydedildi!"
+
+#: src/process.c:140
 msgid "File Decryped &amp; Saved to Documents!"
 msgstr "Dosya Şifresi Çözüldü ve Belgelerʼe Kaydedildi!"
 
-#: src/process.c:80
+#: src/process.c:146
 msgid "Invalid Password!"
 msgstr "Yanlış Parola!"
 
-#: src/process.c:111
+#: src/process.c:183
 msgid "Decrypt"
 msgstr "Şifre Çöz"
+
+#~ msgid "About"
+#~ msgstr "Hakkında"
+
+#~ msgid "Select PDF Files"
+#~ msgstr "PDF Dosyaları Seç"
+
+#~ msgid "Select"
+#~ msgstr "Seç"
