@@ -1,0 +1,6 @@
+data/com.github.jkotra.unlockr.desktop.in
+data/com.github.jkotra.unlockr.metainfo.xml.in
+src/about.c
+src/main.c
+src/process.c
+src/utils.c
