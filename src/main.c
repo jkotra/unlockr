@@ -157,7 +157,7 @@ construct_popover_menu (GtkApplication *app,
   const gchar *accls[] = { (gchar *) "<Primary>A", NULL };
   gtk_application_set_accels_for_action (app, "app.about", accls);
 
-  GMenuItem *m_item = g_menu_item_new (gettext ("About"), "about");
+  GMenuItem *m_item = g_menu_item_new (gettext ("About unlockR"), "about");
   g_menu_item_set_action_and_target_value (m_item, "app.about", NULL);
 
   g_menu_append_item (menu, m_item);
