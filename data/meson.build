@@ -4,7 +4,7 @@ install_data(
 )
 
 i18n.merge_file(
-    input: project_id + '.desktop',
+    input: project_id + '.desktop.in',
     output: project_id + '.desktop',
     po_dir: '../po',
     type: 'desktop',
@@ -14,7 +14,7 @@ i18n.merge_file(
 
 
 i18n.merge_file(
-    input: project_id + '.metainfo.xml',
+    input: project_id + '.metainfo.xml.in',
     output: project_id + '.metainfo.xml',
     po_dir: '../po',
     install: true,

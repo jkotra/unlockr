@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+    <id>com.github.jkotra.unlockr</id>
+    <metadata_license>FSFAP</metadata_license>
+    <project_license>GPL-3.0+</project_license>
+    <developer_name translatable="no">Jagadeesh Kotra</developer_name>
+    <name translatable="no">unlockR</name>
+    <summary>PDF Password remover</summary>
+
+    <description>
+        <p>unlockR is a simple app to unlock / decrypt PDF files.</p>
+    </description>
+
+    <kudos>
+        <kudo>HiDpiIcon</kudo>
+        <kudo>ModernToolkit</kudo>
+    </kudos>
+
+    <requires>
+        <display_length compare="ge">320</display_length>
+    </requires>
+
+    <recommends>
+        <control>keyboard</control>
+        <control>pointing</control>
+        <control>touch</control>
+    </recommends>
+
+    <launchable type="desktop-id">com.github.jkotra.unlockr.desktop</launchable>
+    <translation type="gettext">unlockr</translation>
+
+    <screenshots>
+
+        <screenshot type="default">
+            <image>https://raw.githubusercontent.com/jkotra/unlockr/master/static/light.png</image>
+        </screenshot>
+        <screenshot>
+            <image>https://raw.githubusercontent.com/jkotra/unlockr/master/static/dark.png</image>
+        </screenshot>
+        <screenshot>
+            <image>https://raw.githubusercontent.com/jkotra/unlockr/master/static/process.png</image>
+        </screenshot>
+        <screenshot>
+            <image>https://raw.githubusercontent.com/jkotra/unlockr/master/static/ok.png</image>
+        </screenshot>
+
+    </screenshots>
+
+    <url type="homepage">https://github.com/jkotra/unlockr</url>
+    <url type="bugtracker">https://github.com/jkotra/unlockr/issues</url>
+    <url type="vcs-browser">https://github.com/jkotra/unlockr</url>
+    <url type="translate">https://github.com/jkotra/unlockr/tree/main/po</url>
+    <url type="donation">https://ko-fi.com/jkotra</url>
+
+    <provides>
+        <binary>unlockr</binary>
+    </provides>
+
+    <releases>
+
+        <release version="0.9.0" date="2023-10-18">
+            <description translatable="no">
+                <ul>
+                    <li>option to save decrypted file to folder.</li>
+                    <li>bug fixes.</li>
+                </ul>
+            </description>
+        </release>
+
+        <release version="0.07" date="2022-10-12">
+            <description translatable="no">
+                <ul>
+                    <li>UX improvements</li>
+                </ul>
+            </description>
+        </release>
+
+        <release version="0.05" date="2022-07-29">
+            <description translatable="no">
+                <ul>
+                    <li>drag-n-drop.</li>
+                    <li>empty password text on cancel.</li>
+                </ul>
+            </description>
+        </release>
+
+        <release version="0.04" date="2022-07-20">
+            <description translatable="no">
+                <ul>
+                    <li>Bug fixes.</li>
+                </ul>
+            </description>
+        </release>
+
+        <release version="0.01" date="2022-07-19">
+            <description translatable="no">
+                <ul>
+                    <li>Initial Release</li>
+                </ul>
+            </description>
+        </release>
+
+    </releases>
+
+    <content_rating type="oars-1.1" />
+</component>
