@@ -18,6 +18,9 @@ add_global_arguments([
 app_id = 'com.github.jkotra.unlockr'
 project_id = app_id
 
+i18n = import('i18n')
+gnome = import('gnome')
+
 prefix = get_option('prefix') # should be /usr
 bindir = get_option('bindir') # should be bin
 datadir = get_option('datadir') # should be /usr/share
@@ -35,4 +38,8 @@ subdir('src')
 subdir('po')
 subdir('data')
 
-meson.add_install_script('meson_post_install.py')
+gnome.post_install(
+     glib_compile_schemas: true,
+    gtk_update_icon_cache: true,
+  update_desktop_database: true,
+)

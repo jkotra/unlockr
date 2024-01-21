@@ -3,7 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2022-07-18 19:40+0530\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-04 21:10+0300\n"
 "PO-Revision-Date: 2023-05-26 05:11+0300\n"
 "Last-Translator: zer0-x\n"
 "Language-Team: Arabic\n"
@@ -18,36 +19,50 @@ msgstr ""
 "X-Poedit-SearchPath-0: src\n"
 "X-Poedit-SearchPath-1: data\n"
 
-#: src/main.c:50
+#. Translators: It's the application name. Keep as unlockR!
+#: data/com.github.jkotra.unlockr.desktop.in:4
+#: data/com.github.jkotra.unlockr.desktop.in:5
+msgid "unlockR"
+msgstr ""
+
+#: data/com.github.jkotra.unlockr.desktop.in:6
+msgid "PDF Decryptor"
+msgstr "مِفَكُّ تَعمِيَةِ PDF"
+
+#: data/com.github.jkotra.unlockr.metainfo.xml.in:8
+msgid "PDF Password remover"
+msgstr "مزيل رمز مرور PDF"
+
+#: data/com.github.jkotra.unlockr.metainfo.xml.in:11
+msgid "unlockR is a simple app to unlock / decrypt PDF files."
+msgstr "تطبيق unlockR هو حل بسيط لفك ملفات PDF المُعماة"
+
+#: src/main.c:46
 #, c-format
 msgid "<span size=\"large\">%s is <span weight=\"bold\">%s.</span></span>"
 msgstr "<span size=\"large\">إنَّ %s <span weight=\"bold\">%s.</span></span>"
 
-#: src/main.c:54
+#: src/main.c:50
 msgid "Encrypted"
 msgstr "مُعْمَى"
 
-#: src/main.c:54
+#: src/main.c:50
 msgid "Not Encrypted"
 msgstr "غَيرُ مُعْمَى"
 
-#: src/main.c:80
-msgid "Select PDF Files"
-msgstr "حَدِّد مِلَفَّات PDF"
+#: src/main.c:160
+msgid "About unlockR"
+msgstr ""
 
-#: src/main.c:81
-msgid "Select"
-msgstr "حّدِّد"
+#: src/main.c:168
+msgid "Save To Folder"
+msgstr ""
 
-#: src/main.c:81 src/main.c:142
+#: src/main.c:210
 msgid "Cancel"
 msgstr "إلغَاء"
 
-#: src/main.c:123
-msgid "About"
-msgstr "حَول"
-
-#: src/main.c:197
+#: src/main.c:274
 msgid "Choose a File..."
 msgstr "اِختَر مِلَف…"
 
@@ -55,14 +70,28 @@ msgstr "اِختَر مِلَف…"
 msgid "Enter Password..."
 msgstr "أدخِل رَمزَ المُرُور…"
 
-#: src/process.c:74
+#: src/process.c:106
+#, fuzzy, c-format
+msgid "File Decryped &amp; Saved to %s!"
+msgstr "فُكَّت تَعمِيَةُ المِلَفِّ وحُفِظَ في مُجَلَّدِ المُستَنَدَات!"
+
+#: src/process.c:140
 msgid "File Decryped &amp; Saved to Documents!"
 msgstr "فُكَّت تَعمِيَةُ المِلَفِّ وحُفِظَ في مُجَلَّدِ المُستَنَدَات!"
 
-#: src/process.c:80
+#: src/process.c:146
 msgid "Invalid Password!"
 msgstr "رَمزُ المُرُورِ خاطِئ!"
 
-#: src/process.c:111
+#: src/process.c:183
 msgid "Decrypt"
 msgstr "فَكُّ التَّعمِيَة"
+
+#~ msgid "About"
+#~ msgstr "حَول"
+
+#~ msgid "Select PDF Files"
+#~ msgstr "حَدِّد مِلَفَّات PDF"
+
+#~ msgid "Select"
+#~ msgstr "حّدِّد"

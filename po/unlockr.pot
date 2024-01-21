@@ -1,21 +1,21 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-04 21:10+0300\n"
-"PO-Revision-Date: 2023-05-03 12:35+0200\n"
-"Last-Translator: Milo Ivir <mail@milotype.de>\n"
-"Language-Team: \n"
-"Language: hr\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"X-Generator: Poedit 3.0\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-SearchPath-0: src\n"
-"X-Poedit-SearchPath-1: data\n"
 
 #. Translators: It's the application name. Keep as unlockR!
 #: data/com.github.jkotra.unlockr.desktop.in:4
@@ -25,29 +25,28 @@ msgstr ""
 
 #: data/com.github.jkotra.unlockr.desktop.in:6
 msgid "PDF Decryptor"
-msgstr "Dešifriranje PDF datoteka"
+msgstr ""
 
 #: data/com.github.jkotra.unlockr.metainfo.xml.in:8
 msgid "PDF Password remover"
-msgstr "Uklanjanje lozinki iz PDF datoteka"
+msgstr ""
 
 #: data/com.github.jkotra.unlockr.metainfo.xml.in:11
 msgid "unlockR is a simple app to unlock / decrypt PDF files."
 msgstr ""
-"unlockR je jednostavna aplikacija za otključavanje/dešifriranje PDF datoteka"
 
 #: src/main.c:46
 #, c-format
 msgid "<span size=\"large\">%s is <span weight=\"bold\">%s.</span></span>"
-msgstr "<span size=\"large\">%s je <span weight=\"bold\">%s.</span></span>"
+msgstr ""
 
 #: src/main.c:50
 msgid "Encrypted"
-msgstr "šifrirana"
+msgstr ""
 
 #: src/main.c:50
 msgid "Not Encrypted"
-msgstr "nešifrirana"
+msgstr ""
 
 #: src/main.c:160
 msgid "About unlockR"
@@ -59,38 +58,29 @@ msgstr ""
 
 #: src/main.c:210
 msgid "Cancel"
-msgstr "Odustani"
+msgstr ""
 
 #: src/main.c:274
 msgid "Choose a File..."
-msgstr "Odaberi datoteku …"
+msgstr ""
 
 #: src/process.c:32
 msgid "Enter Password..."
-msgstr "Upiši lozinku …"
+msgstr ""
 
 #: src/process.c:106
-#, fuzzy, c-format
+#, c-format
 msgid "File Decryped &amp; Saved to %s!"
-msgstr "Datoteka je dešifrirana i spremljena u mapu Dokumenti!"
+msgstr ""
 
 #: src/process.c:140
 msgid "File Decryped &amp; Saved to Documents!"
-msgstr "Datoteka je dešifrirana i spremljena u mapu Dokumenti!"
+msgstr ""
 
 #: src/process.c:146
 msgid "Invalid Password!"
-msgstr "Neispravna lozinka!"
+msgstr ""
 
 #: src/process.c:183
 msgid "Decrypt"
-msgstr "Dešifriraj"
-
-#~ msgid "About"
-#~ msgstr "Informacije"
-
-#~ msgid "Select PDF Files"
-#~ msgstr "Odaberi PDF datoteke"
-
-#~ msgid "Select"
-#~ msgstr "Odaberi"
+msgstr ""
