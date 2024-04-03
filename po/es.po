@@ -1,0 +1,86 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-04 21:10+0300\n"
+"PO-Revision-Date: 2024-04-02 17:29-0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. Translators: It's the application name. Keep as unlockR!
+#: data/com.github.jkotra.unlockr.desktop.in:4
+#: data/com.github.jkotra.unlockr.desktop.in:5
+msgid "unlockR"
+msgstr "unlockR"
+
+#: data/com.github.jkotra.unlockr.desktop.in:6
+msgid "PDF Decryptor"
+msgstr "Desencriptador de PDF"
+
+#: data/com.github.jkotra.unlockr.metainfo.xml.in:8
+msgid "PDF Password remover"
+msgstr "Eliminador de contraseñas PDF"
+
+#: data/com.github.jkotra.unlockr.metainfo.xml.in:11
+msgid "unlockR is a simple app to unlock / decrypt PDF files."
+msgstr "unlockR es una sencilla aplicación para desbloquear / desencriptar archivos PDF."
+
+#: src/main.c:46
+#, c-format
+msgid "<span size=\"large\">%s is <span weight=\"bold\">%s.</span></span>"
+msgstr "<span size=\"large\">%s es <span weight=\"bold\">%s.</span></span>"
+
+#: src/main.c:50
+msgid "Encrypted"
+msgstr "Encriptado"
+
+#: src/main.c:50
+msgid "Not Encrypted"
+msgstr "No encriptado"
+
+#: src/main.c:160
+msgid "About unlockR"
+msgstr "Acerca de unlockR"
+
+#: src/main.c:168
+msgid "Save To Folder"
+msgstr "Guardar en una carpeta"
+
+#: src/main.c:210
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/main.c:274
+msgid "Choose a File..."
+msgstr "Elegir un archivo..."
+
+#: src/process.c:32
+msgid "Enter Password..."
+msgstr "Introduzca la contraseña..."
+
+#: src/process.c:106
+#, c-format
+msgid "File Decryped &amp; Saved to %s!"
+msgstr "Archivo desencriptado &amp; ¡Guardado en %s!"
+
+#: src/process.c:140
+msgid "File Decryped &amp; Saved to Documents!"
+msgstr "¡Archivo desencriptado y guardado en documentos!"
+
+#: src/process.c:146
+msgid "Invalid Password!"
+msgstr "¡Contraseña no válida!"
+
+#: src/process.c:183
+msgid "Decrypt"
+msgstr "Desencriptar"
