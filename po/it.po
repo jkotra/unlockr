@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-04 21:10+0300\n"
-"PO-Revision-Date: 2022-07-22 08:41+0100\n"
+"PO-Revision-Date: 2024-11-08 20:41+0100\n"
 "Last-Translator: Albano Battistella <albano_battistella@hotmail.com\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -23,17 +23,16 @@ msgid "unlockR"
 msgstr ""
 
 #: data/com.github.jkotra.unlockr.desktop.in:6
-#, fuzzy
 msgid "PDF Decryptor"
-msgstr "Decrittografa"
+msgstr "Decrittografatore PDF"
 
 #: data/com.github.jkotra.unlockr.metainfo.xml.in:8
 msgid "PDF Password remover"
-msgstr ""
+msgstr "Rimozione password PDF"
 
 #: data/com.github.jkotra.unlockr.metainfo.xml.in:11
 msgid "unlockR is a simple app to unlock / decrypt PDF files."
-msgstr ""
+msgstr "UnlockR è una semplice app per sbloccare/decrittografare file PDF."
 
 #: src/main.c:46
 #, c-format
@@ -50,11 +49,11 @@ msgstr "Non Crittografato"
 
 #: src/main.c:160
 msgid "About unlockR"
-msgstr ""
+msgstr "Informazioni su unlockR"
 
 #: src/main.c:168
 msgid "Save To Folder"
-msgstr ""
+msgstr "Salva nella cartella"
 
 #: src/main.c:210
 msgid "Cancel"
@@ -71,7 +70,7 @@ msgstr "Inserire password..."
 #: src/process.c:106
 #, fuzzy, c-format
 msgid "File Decryped &amp; Saved to %s!"
-msgstr "File decrittografato &amp; Salvato in documenti!"
+msgstr "file crittografato &amp; salvato in %s!"
 
 #: src/process.c:140
 msgid "File Decryped &amp; Saved to Documents!"
