@@ -3,8 +3,8 @@
     <id>com.github.jkotra.unlockr</id>
     <metadata_license>FSFAP</metadata_license>
     <project_license>GPL-3.0+</project_license>
-    <developer_name translatable="no">Jagadeesh Kotra</developer_name>
-    <name translatable="no">unlockR</name>
+    <developer_name translate="no">Jagadeesh Kotra</developer_name>
+    <name translate="no">unlockR</name>
     <summary>PDF Password remover</summary>
 
     <description>
@@ -59,7 +59,7 @@
     <releases>
 
         <release version="0.9.0" date="2023-10-18">
-            <description translatable="no">
+            <description translate="no">
                 <ul>
                     <li>option to save decrypted file to folder.</li>
                     <li>bug fixes.</li>
@@ -68,7 +68,7 @@
         </release>
 
         <release version="0.07" date="2022-10-12">
-            <description translatable="no">
+            <description translate="no">
                 <ul>
                     <li>UX improvements</li>
                 </ul>
@@ -76,7 +76,7 @@
         </release>
 
         <release version="0.05" date="2022-07-29">
-            <description translatable="no">
+            <description translate="no">
                 <ul>
                     <li>drag-n-drop.</li>
                     <li>empty password text on cancel.</li>
@@ -85,7 +85,7 @@
         </release>
 
         <release version="0.04" date="2022-07-20">
-            <description translatable="no">
+            <description translate="no">
                 <ul>
                     <li>Bug fixes.</li>
                 </ul>
@@ -93,7 +93,7 @@
         </release>
 
         <release version="0.01" date="2022-07-19">
-            <description translatable="no">
+            <description translate="no">
                 <ul>
                     <li>Initial Release</li>
                 </ul>
