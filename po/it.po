@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-04 21:10+0300\n"
-"PO-Revision-Date: 2024-11-08 20:41+0100\n"
-"Last-Translator: Albano Battistella <albano_battistella@hotmail.com\n"
+"PO-Revision-Date: 2024-11-23 20:41+0100\n"
+"Last-Translator: Albano Battistella <albanobattistella@gmail.com\n"
 "Language-Team: Italian\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -57,7 +57,7 @@ msgstr "Salva nella cartella"
 
 #: src/main.c:210
 msgid "Cancel"
-msgstr "Cancella"
+msgstr "Annulla"
 
 #: src/main.c:274
 msgid "Choose a File..."
