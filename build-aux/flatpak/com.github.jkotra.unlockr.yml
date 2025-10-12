@@ -1,12 +1,11 @@
 app-id: com.github.jkotra.unlockr
 runtime : org.gnome.Platform
-runtime-version : '45'
+runtime-version : '49'
 sdk : org.gnome.Sdk
 command: unlockr
 
 finish-args:
   - --socket=wayland
-  - --socket=fallback-x11
   - --share=ipc
   - --filesystem=xdg-documents
   - --device=dri
@@ -18,7 +17,7 @@ modules:
     sources:
       - type: git
         url: 'https://github.com/qpdf/qpdf'
-        tag: "v11.4.0"
+        tag: "v12.2.0"
     cleanup:
       - "*.a"
       - "*.la"

@@ -1,5 +1,5 @@
 project('com.github.jkotra.unlockr' , 'c', 
-          version: '0.9.1',
+          version: '0.9.2',
     meson_version: '>= 0.58.0',
   default_options:  [ 'warning_level=2',
                       'c_std=gnu11',
