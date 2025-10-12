@@ -38,20 +38,21 @@ void
 send_toast (char *message)
 {
 
+  if (G_IS_OBJECT (Pwidgets.current_toast))
+    {
+      adw_toast_dismiss (Pwidgets.current_toast);
+      g_debug ("dismissed current toast: %p", Pwidgets.current_toast);
+    }
+  else
+    {
+      g_debug ("current toast is invalid addr: %p", Pwidgets.current_toast);
+    }
   AdwToast *toast = adw_toast_new (message);
   set_toast_priority (toast);
   adw_toast_overlay_add_toast (ADW_TOAST_OVERLAY (Pwidgets.toast_overlay),
                                toast);
-
-  if (Pwidgets.n_toasts > 0)
-    {
-      Pwidgets.toasts =
-          realloc (Pwidgets.toasts, (Pwidgets.n_toasts + 1) * sizeof (GObject));
-      g_debug ("toast mem allocated for n = %zu\n", Pwidgets.n_toasts);
-    }
-
-  Pwidgets.toasts[Pwidgets.n_toasts] = toast;
-  Pwidgets.n_toasts++;
+  adw_toast_set_timeout (toast, 10);
+  Pwidgets.current_toast = toast;
 }
 
 void
@@ -70,23 +71,6 @@ on_password_changed (GtkWidget *password_entry, gpointer user_data)
 }
 
 void
-dismiss_toasts ()
-{
-  for (size_t i = 0; i < (Pwidgets.n_toasts - 1) && (Pwidgets.n_toasts > 0);
-       i++)
-    {
-      AdwToast *toast = ADW_TOAST (Pwidgets.toasts[i]);
-      if (adw_toast_get_title (toast) != NULL)
-        {
-          g_debug ("dismissed toast title = %s | n=(%zu)\n",
-                   adw_toast_get_title (toast), i);
-          adw_toast_dismiss (toast);
-        }
-    }
-  Pwidgets.n_toasts = 0;
-}
-
-void
 on_output_folder_chosen (GtkFileDialog *dialog,
                          GAsyncResult *res,
                          char *password)
@@ -101,7 +85,6 @@ on_output_folder_chosen (GtkFileDialog *dialog,
   gchar *output_path = g_build_filename (path, Pfile->name, NULL);
   decryptPDF (Pfile->path, (char *) output_path, password);
   g_debug ("decrypted file saved to: %s", output_path);
-  dismiss_toasts ();
   set_toast_color_to_green (Pwidgets.toast_overlay);
   send_toast (g_strdup_printf (gettext ("File Decryped &amp; Saved to %s!"),
                                g_file_get_basename (folder)));
@@ -135,7 +118,6 @@ on_decrypt_btn_clicked (GtkWidget *btn, GSettings *settings)
       else
         {
           decryptPDF (Pfile->path, (char *) default_out, (char *) password);
-          dismiss_toasts ();
           set_toast_color_to_green (Pwidgets.toast_overlay);
           send_toast (gettext ("File Decryped &amp; Saved to Documents!"));
         }
@@ -151,8 +133,6 @@ on_decrypt_btn_clicked (GtkWidget *btn, GSettings *settings)
 struct ProcessPageWidgets
 construct_process (GtkWidget *box, GtkWidget *window, GSettings *settings)
 {
-
-  Pwidgets.toasts = malloc (1 * sizeof (GObject));
 
   GtkWidget *top_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 4);
   GtkWidget *bottom_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 4);

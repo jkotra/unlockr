@@ -30,7 +30,7 @@ QPDF
 
 to build from local directory, use:
 ```
-flatpak-builder --user --install build-dir dist/flatpak/com.github.jkotra.unlockr.yml --force-clean
+flatpak-builder --user --install build-dir build-aux/flatpak/com.github.jkotra.unlockr.yml --force-clean
 ```
 
 ---

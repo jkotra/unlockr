@@ -1,12 +1,14 @@
 #include <qpdf/QPDF.hh>
 #include <qpdf/QPDFWriter.hh>
 #include <glib.h>
+#include <glib/gstrfuncs.h>
 
 extern "C" const char *
 getVersion ()
 {
   QPDF qpdf;
-  return qpdf.QPDFVersion ().c_str ();
+  std::string ver = qpdf.QPDFVersion();
+  return g_strdup(ver.c_str());
 }
 
 extern "C" bool
@@ -27,6 +29,7 @@ isFileEncrypted (char *filepath)
     {
       if (err.what ())
         std::cout << err.what () << std::endl;
+        qpdf.closeInputSource();
       return false;
     }
 }
@@ -50,6 +53,7 @@ decryptPDF (char *filepath, char *out, char *password)
     {
       // std::cout << err.what () << std::endl;
       g_warning ("%s", err.what ());
+      qpdf.closeInputSource();
       return NULL;
     }
 }
@@ -62,11 +66,13 @@ verifyPassword (char *filepath, char *password)
   try
     {
       qpdf.processFile (filepath, password);
+      qpdf.closeInputSource();
       return true;
     }
   catch (std::exception &err)
     {
       g_warning ("%s", err.what ());
+      qpdf.closeInputSource();
       return false;
     }
 }
