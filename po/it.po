@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-01-04 21:10+0300\n"
-"PO-Revision-Date: 2024-11-23 20:41+0100\n"
+"PO-Revision-Date: 2025-10-18 16:41+0200\n"
 "Last-Translator: Albano Battistella <albanobattistella@gmail.com\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -68,9 +68,8 @@ msgid "Enter Password..."
 msgstr "Inserire password..."
 
 #: src/process.c:106
-#, fuzzy, c-format
 msgid "File Decryped &amp; Saved to %s!"
-msgstr "file crittografato &amp; salvato in %s!"
+msgstr "File Decifrato &amp; Salvato in %s!"
 
 #: src/process.c:140
 msgid "File Decryped &amp; Saved to Documents!"
